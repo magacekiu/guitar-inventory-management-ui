@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Guitar Inventory Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="siteTitle">Guitar Inventory Management</a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="add.html">Add</a>
+            <a href="search.html">Search</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Search for Guitars</h1>
+        <form id="search-guitar-form">
+            <label for="builder">Builder:</label>
+            <input type="text" id="builder" name="builder"><br>
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model"><br>
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type"><br>
+            <label for="back-wood">Back wood:</label>
+            <input type="text" id="back-wood" name="back-wood"><br>
+            <label for="top-wood">Top Wood:</label>
+            <input type="text" id="top-wood" name="top-wood"><br>
+            <button type="button" onclick="searchGuitars()">Search</button>
+        </form>
+        <table id="search-results">
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Builder</th>
+                    <th>Model</th>
+                    <th>Type</th>
+                    <th>Back Wood</th>
+                    <th>Top Wood</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Search results will be inserted here -->
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

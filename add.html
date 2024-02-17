@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Guitar - Guitar Inventory Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="siteTitle">Guitar Inventory Management</a>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="add.html">Add</a>
+            <a href="search.html">Search</a>
+        </nav>
+    </header>
+    <main>
+        <form id="addForm">
+            <label for="serial-number">Serial number:</label>
+            <input type="text" id="serial-number" name="serial-number" required><br>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required><br>
+            <label for="builder">Builder:</label>
+            <input type="text" id="builder" name="builder" required><br>
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" required><br>
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" required><br>
+            <label for="back-wood">Back wood:</label>
+            <input type="text" id="back-wood" name="back-wood" required><br>
+            <label for="top-wood">Top Wood:</label>
+            <input type="text" id="top-wood" name="top-wood" required><br>
+            <button type="button" onclick="addGuitar()">Add the Guitar</button>
+        </form>
+    </main>
+    <script>
+        function addGuitar() {
+            const form = document.getElementById('addForm');
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+            alert(JSON.stringify(data));
+        }
+    </script>
+</body>
+
+</html>

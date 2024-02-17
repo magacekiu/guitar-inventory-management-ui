@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:antiquewhite;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+nav a {
+    margin: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.siteTitle {
+    font-size: extra-large;
+    font-weight: bold;
+    color: #CC5500;
+    text-decoration: none;
+}   
+
+main {
+    padding: 20px;
+    margin: 0px auto;
+    display: block;
+    width: 80%;
+}
+
+form label {
+    display: inline-block;
+    font-weight: bold;
+    font-size: large;
+    margin: 10px 10px 10px 0;
+    text-align: right;
+    width: 20%; /* Adjust if necessary */
+}
+form input{
+    display: inline-block;
+    margin: 10px 0px;
+    width: 75%; /* Adjust if necessary */
+    background-color: antiquewhite;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+form button {
+    margin: 0px auto;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    background-color: tan;
+    border:none;
+    border-radius: 5px;
+}
