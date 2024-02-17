@@ -23,6 +23,13 @@ nav a {
     color: #CC5500;
     text-decoration: none;
 }   
+ 
+.centered-large-image {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px; 
+}
 
 main {
     padding: 20px;
@@ -37,12 +44,13 @@ form label {
     font-size: large;
     margin: 10px 10px 10px 0;
     text-align: right;
-    width: 20%; /* Adjust if necessary */
+    width: 20%;
 }
 form input{
     display: inline-block;
     margin: 10px 0px;
-    width: 75%; /* Adjust if necessary */
+    width: 75%;
+    height: 30px;
     background-color: antiquewhite;
     border: 1px solid black;
     border-radius: 3px;
