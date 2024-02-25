@@ -33,4 +33,5 @@ async function searchGuitars() {
     } catch (error) {
         alert('Something went wrong. Please try again or contact the customer support team.');
     }
+
 }
