@@ -36,12 +36,37 @@
         </form>
     </main>
     <script>
-        function addGuitar() {
+        async function addGuitar() {
             const form = document.getElementById('addForm');
             const formData = new FormData(form);
             const data = {};
-            formData.forEach((value, key) => data[key] = value);
-            alert(JSON.stringify(data));
+            let isEmptyField = false;
+            formData.forEach((value, key) => {
+                if (!value.trim()) {
+                    alert(`Please enter a value for ${key.replace('-', ' ')}`);
+                    isEmptyField = true;
+                    return;
+                }
+                data[key] = value;
+            });
+            if (isEmptyField) return;
+
+            try {
+                const response = await fetch('http://localhost:8080/inventory/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                if (response.ok) {
+                    alert('The guitar was added to the system');
+                } else {
+                    alert('Something went wrong. Please try again or contact the customer support team.');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again or contact the customer support team.');
+            }
         }
     </script>
 </body>

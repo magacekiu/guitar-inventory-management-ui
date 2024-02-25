@@ -6,29 +6,31 @@ const guitars = [
     { serialNumber: "SN005", builder: "Yamaha", model: "FG800", type: "Acoustic", backWood: "Nato", topWood: "Spruce", price: "500" }
 ];
 
-function searchGuitars() {
+async function searchGuitars() {
     const builder = document.getElementById('builder').value;
     const model = document.getElementById('model').value;
     const type = document.getElementById('type').value;
     const backWood = document.getElementById('back-wood').value;
     const topWood = document.getElementById('top-wood').value;
 
-    const filteredGuitars = guitars.filter(guitar => 
-        (builder ? guitar.builder === builder : true) &&
-        (model ? guitar.model === model : true) &&
-        (type ? guitar.type === type : true) &&
-        (backWood ? guitar.backWood === backWood : true) &&
-        (topWood ? guitar.topWood === topWood : true)
-    );
+    try {
+        const response = await fetch(`http://localhost:8080/inventory/search?builder=${builder}&model=${model}&type=${type}&backWood=${backWood}&topWood=${topWood}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const guitars = await response.json();
 
-    const resultsBody = document.getElementById('search-results').getElementsByTagName('tbody')[0];
-    resultsBody.innerHTML = ''; 
+        const resultsBody = document.getElementById('search-results').getElementsByTagName('tbody')[0];
+        resultsBody.innerHTML = '';
 
-    filteredGuitars.forEach(guitar => {
-        const row = resultsBody.insertRow();
-        Object.values(guitar).forEach(text => {
-            const cell = row.insertCell();
-            cell.textContent = text;
+        guitars.forEach(guitar => {
+            const row = resultsBody.insertRow();
+            Object.values(guitar).forEach(text => {
+                const cell = row.insertCell();
+                cell.textContent = text;
+            });
         });
-    });
+    } catch (error) {
+        alert('Something went wrong. Please try again or contact the customer support team.');
+    }
 }
