@@ -8,17 +8,26 @@ const guitars = [
 
 async function searchGuitars() {
     console.log('searchGuitars function called');
-    const builder = document.getElementById('builder').value.toUpperCase();
+    let queryParams = new URLSearchParams();
+    const builder = document.getElementById('builder').value;
     const model = document.getElementById('model').value;
     const type = document.getElementById('type').value;
     const backWood = document.getElementById('back-wood').value;
     const topWood = document.getElementById('top-wood').value;
 
-    const response = await fetch(`https://guitar-inventory-management-latest-5qed.onrender.com/inventory/search?builder=${builder}&model=${model}&type=${type}&backWood=${backWood}&topWood=${topWood}`);
+    if (builder) queryParams.append('builder', builder.toUpperCase());
+    if (model) queryParams.append('model', model);
+    if (type) queryParams.append('type', type);
+    if (backWood) queryParams.append('backWood', backWood);
+    if (topWood) queryParams.append('topWood', topWood);
+
+    const response = await fetch(`https://guitar-inventory-management-latest-5qed.onrender.com/inventory/search?${queryParams}`).catch(error => console.error('Fetch error:', error));
+    console.log(response);
     if (!response.ok) {
         throw new Error('Failed to fetch guitars: ' + response.statusText);
     }
     const filteredGuitars = await response.json();
+    console.log(filteredGuitars);
     if (!Array.isArray(filteredGuitars)) {
         throw new Error('Expected an array of guitars, but got: ' + typeof filteredGuitars);
     }
