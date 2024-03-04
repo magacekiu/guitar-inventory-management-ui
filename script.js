@@ -7,14 +7,20 @@ const guitars = [
 ];
 
 async function searchGuitars() {
-    const builder = document.getElementById('builder').value;
+    const builder = document.getElementById('builder').value.toUpperCase();
     const model = document.getElementById('model').value;
     const type = document.getElementById('type').value;
     const backWood = document.getElementById('back-wood').value;
     const topWood = document.getElementById('top-wood').value;
 
     const response = await fetch(`https://guitar-inventory-management-latest-5qed.onrender.com/inventory/search?builder=${builder}&model=${model}&type=${type}&backWood=${backWood}&topWood=${topWood}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch guitars: ' + response.statusText);
+    }
     const filteredGuitars = await response.json();
+    if (!Array.isArray(filteredGuitars)) {
+        throw new Error('Expected an array of guitars, but got: ' + typeof filteredGuitars);
+    }
 
     const resultsBody = document.getElementById('search-results').getElementsByTagName('tbody')[0];
     resultsBody.innerHTML = ''; 
