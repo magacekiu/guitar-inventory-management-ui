@@ -36,12 +36,25 @@
         </form>
     </main>
     <script>
-        function addGuitar() {
+        async function addGuitar() {
             const form = document.getElementById('addForm');
             const formData = new FormData(form);
             const data = {};
             formData.forEach((value, key) => data[key] = value);
-            alert(JSON.stringify(data));
+
+            const response = await fetch('https://guitar-inventory-management-latest-5qed.onrender.com/inventory/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                alert('Guitar added successfully');
+            } else {
+                alert('Failed to add guitar');
+            }
         }
     </script>
 </body>
