@@ -7,6 +7,7 @@ const guitars = [
 ];
 
 async function searchGuitars() {
+    console.log('searchGuitars function called');
     const builder = document.getElementById('builder').value.toUpperCase();
     const model = document.getElementById('model').value;
     const type = document.getElementById('type').value;
