@@ -29,7 +29,7 @@ async function searchGuitars() {
         const row = resultsBody.insertRow();
         Object.values(guitar).forEach(text => {
             const cell = row.insertCell();
-            cell.textContent = text;
+            cell.textContent = text ? text : ''; // Handle null values by replacing them with an empty string
         });
     });
 }
