@@ -21,7 +21,7 @@ async function searchGuitars() {
     if (backWood) queryParams.append('backWood', backWood);
     if (topWood) queryParams.append('topWood', topWood);
 
-    const response = await fetch(`https://guitar-inventory-management-latest-5qed.onrender.com/inventory/search?${queryParams}`).catch(error => console.error('Fetch error:', error));
+    const response = await fetchWithAuth(`/inventory/search?${queryParams}`);
     console.log(response);
     if (!response.ok) {
         throw new Error('Failed to fetch guitars: ' + response.statusText);
